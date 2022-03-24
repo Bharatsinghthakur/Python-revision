@@ -28,6 +28,7 @@ if __name__ == "__main__":
         for result in results:
             print(result)
 
+"counter pref_function"
 finish = time.perf_counter()
 
 print(f"Finished in {round(finish-start,2)} second(s)")
