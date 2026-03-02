@@ -30,7 +30,8 @@ pop = student.pop('age')
 print(pop)
 
 print(student)
-#len : to find out the length of the dictionary
+
+#len : to find out the length of the dictionary it gives the number of key pairs in dict
 
 
 print(len(student))
