@@ -6,6 +6,9 @@ import sys
 
 # importing particular function
 from my_module import find_index , test
+
+# diff directory module 
+import myfile.import_module
 courses = ['History','Math','Physics','CompSci']
 
 # this approch maybe only give us access to find index function not anything else
