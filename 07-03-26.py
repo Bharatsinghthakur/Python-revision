@@ -70,3 +70,9 @@ def outer():
     print(x) # value of x will be changed here overwritten the outer x value
 
 outer()
+
+i = 1
+while i < 1:
+    print(i)
+else:
+    print("done")
