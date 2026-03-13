@@ -7,7 +7,6 @@ import csv
 # dilect that has come present parameters for what is expects the format 
 # of our csv file to be so by default .
 
-
 # Read the file as read more csv with reader
 # with open('names.csv','r') as csv_file:
 #     csv_reader = csv.reader(csv_file)
@@ -44,6 +43,7 @@ with open('names.csv','r') as csv_file:
         # if you want to remove the email 
         
         csv_writer = csv.DictWriter(new_file,fieldnames=fieldnames,delimiter='\t')
+       
         # we can specify the header name as well
         
         csv_writer.writeheader()
