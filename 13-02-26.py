@@ -22,3 +22,4 @@ else:
     f.close()
 finally:
     print('This is the block where we should close the db connections')
+
