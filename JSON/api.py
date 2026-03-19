@@ -12,6 +12,11 @@ print(data)
 rates = data['rates']
 print(rates.items())
 
+# json.load -> load file as json in python
+# json.loads -> load string as json in python
+# json.dump -> dump json as file
+# json.dumps -> dump json as string
+
 
 
 # for sno,(currency,rates) in enumerate(rates.items()):
