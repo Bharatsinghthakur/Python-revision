@@ -1,7 +1,6 @@
 # LIST TUPLES AND SETS
 
 # LIST 
-
 courses = ['History','Math','Physics','CompSci']
 print(len(courses))
 print(courses[3])
@@ -36,12 +35,12 @@ print(courses)
 #3 extend -  to extend multiple item given in the list 
 lecture = ['a','b','c']
 lecture_2 = ['d','e','f'] 
-lecture.extend(lecture_2)
+print(lecture.extend(lecture_2))
 
 #4 remove 
 rem = lecture.remove('c')
-print(lecture)
-print(rem)
+print(lecture,"printed lecture")
+print(rem,'removed or not')
 
 #5 pop
 
@@ -50,7 +49,9 @@ print(lecture)
 print(pop)
 
 # sorting 
-
+A = sorted(lecture)
+print(A)
+print('sorted function')
 #6 reverse
 courses.reverse()
 print(courses)

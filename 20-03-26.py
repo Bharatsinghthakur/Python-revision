@@ -53,5 +53,33 @@ def e_sort(emp):
 # s_employee = sorted(employee,key=lambda e:e.name,reverse=True)
 s_employee = sorted(employee,key=attrgetter('age'),reverse=True)
 
-
+print("this key is there ?",hasattr(e1,'name'))
 print(s_employee)
+
+
+# HAS ATTR
+import time
+
+class GFG:
+    name = 'GEEKSFORGEEKS'
+    age = 24
+
+obj = GFG()
+
+start_hasattr = time.time()
+
+if(hasattr(obj,'motto')):
+    print('Motto is here')
+else:
+    print('NO motto')
+
+print('Time to execute hasattr :' + str(time.time() - start_hasattr))
+
+start_try = time.time()
+
+try:
+    print(obj.motto)
+    print("Motto is here")
+except AttributeError:
+    print("No Motto")
+print('Time to execute try: ' + str(time.time() -start_try))

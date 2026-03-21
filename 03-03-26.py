@@ -15,7 +15,7 @@ print(student.get('address','Not Found'))
 
 student['phone'] = '777-777'
 student.update({'name':'Niko','age':4,'address':'delhi'})
-print(student)
+print(student,"whole student")
 print(student.get('phone'))
 
 

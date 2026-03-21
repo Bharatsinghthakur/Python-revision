@@ -36,7 +36,9 @@ print(greeting + ", " + name + ". Welcome!" )
 message = '{}, {}.Welcome'.format(greeting,name)
 reply = "i am pretty good"
 mess = f'hey buddy how are you ? {reply.upper()}'
-print(dir(mess))
+print(message)
+print(mess)
+# print(dir(mess))
 
 
-print(help(str))
+# print(help(str))

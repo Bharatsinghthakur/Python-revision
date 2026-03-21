@@ -3,10 +3,11 @@
 # join - convert the elements of a iterable into a string
 # courses = ['history','Physics','Chemistry','Maths','Economics']
 
-# courses_str = ' - '.join(courses)
+# courses_str = ''.join(courses)
 # print(courses_str)
+# print(type(courses_str))
 
-# new_list = courses_str.split(' - ')
+# new_list = courses_str.split('-')
 # print(new_list)
 
 #Tuples
@@ -34,13 +35,13 @@
 # tuple_1[0] = 'Art'
 
 # print(tuple_1)
-# print(tuple_2) 
+# print(type(tuple_2)) 
 
 
-#sets
+#sets - unorderd collection of unique values 
 
-cs_courses = {'History','Math','Physics','Compsci','Math'}
-print(cs_courses)
+# cs_courses = {'History','Math','Physics','Compsci','Math'}
+# print(cs_courses)
 
 cs_courses = {'History','Math','Physics','CompSci'}
 art_courses = {'History','Math','Art','Design'}
