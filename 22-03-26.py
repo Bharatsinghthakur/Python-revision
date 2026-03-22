@@ -33,3 +33,14 @@ else:
 
 print(id(l1))
 print(id(l2))
+
+from collections import namedtuple
+
+# names tuples are more readable and is compromised between tuple and dictionary
+Color = namedtuple('color',['red','green','blue'])
+
+color = Color(55,155,255)
+color = Color(red=55,blue=155,green=255)
+
+print(color.red)
+print(color)
