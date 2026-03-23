@@ -1,0 +1,17 @@
+2026-03-23 21:37:14,145:__main__:Tried to divide by zero
+2026-03-23 21:39:15,770:__main__:Tried to divide by zero
+Traceback (most recent call last):
+  File "C:\Users\bharat singh thakur\OneDrive\Desktop\Python\Python-revison\logging\log-sample.py", line 61, in divide
+    result = x / y
+             ~~^~~
+ZeroDivisionError: division by zero
+2026-03-23 21:47:19,071:__main__:Tried to divide by zero
+2026-03-23 21:47:46,792:__main__:Tried to divide by zero
+2026-03-23 21:48:46,881:__main__:Tried to divide by zero
+2026-03-23 21:49:12,059:__main__:Tried to divide by zero
+2026-03-23 21:49:12,059:__main__:Tried to divide by zero
+Traceback (most recent call last):
+  File "C:\Users\bharat singh thakur\OneDrive\Desktop\Python\Python-revison\logging\log-sample.py", line 70, in divide
+    result = x / y
+             ~~^~~
+ZeroDivisionError: division by zero
