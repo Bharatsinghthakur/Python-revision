@@ -9,13 +9,13 @@ def do_something(seconds):
     return f'Done Sleeping ...{seconds}'
 
 '''
-
+ 
 with concurrent.futures.ThreadPoolExecutor() as executor:
    secs = [5,4,3,2,1]
 #  results = [executor.submit(do_something,1) for _ in range(10)]
    results = [executor.submit(do_something, sec) for sec in secs]
 
-   # will yield result and we can iterate it with loop
+   # will yield result once its finish and we can iterate it with loop
    for f in concurrent.futures.as_completed(results):
        print(f.result())
 
@@ -36,8 +36,10 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
 
 with concurrent.futures.ThreadPoolExecutor() as executor:
     secs = [5,4,3,2,1]
+    # when we use submit method it returns the future object -- results were shown as completed
+    # but when we use map it returns the result instead -- map gonna return the result the order in which they are started
     results = executor.map(do_something,secs)
-   
+
     for result in results:
       print(result)
 

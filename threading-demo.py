@@ -4,7 +4,7 @@ import time
 
 start = time.perf_counter()
 
-
+ 
 def do_something(seconds):
     print(f"sleeping {seconds} second(s)")
     time.sleep(seconds)
@@ -24,7 +24,7 @@ t2.start()
 # do_something()
 
 # As the function is getting finshed without calculating the time .
-# we can make the function wait till it complete its tread
+# we can make the function wait till it complete its thread
 t1.join()
 t2.join()
 
