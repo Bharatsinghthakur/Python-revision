@@ -1,7 +1,7 @@
 import concurrent.futures
 import time
 
-# do something function 
+# do something functions --
 def do_something(seconds):
     print(f"sleeping {seconds} second(s)")
     time.sleep(seconds)
