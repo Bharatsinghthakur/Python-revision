@@ -7,7 +7,7 @@ III. The same character cannot be used more than 4 times. This rule is case-sens
 IV. The password has to contain at least one uppercase and one lowercase letter.
 V. The password has to contain at least one of the following special characters: "*", "#", "@".
 
-Task:
+Task: 
 
 Write a function that takes in a password and returns a collection of any rule numbers that are not met.
 
