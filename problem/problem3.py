@@ -252,63 +252,140 @@ prices = [
 #     return print(dict(sorted(result.items())))
 # matching(users,payments,prices)
 
-def matching(users, payments, prices):
+# def matching(users, payments, prices):
 
-    # Step 1: price map
-    price_map = {}
-    for ticket, price in prices:
-        price_map[ticket] = int(price)
+#     # Step 1: price map
+#     price_map = {}
+#     for ticket, price in prices:
+#         price_map[ticket] = int(price)
 
-    # Step 2: prepare structures
-    user_info = {}
-    email_to_user = {}
-    amount_to_users = {}
+#     # Step 2: prepare structures
+#     user_info = {}
+#     email_to_user = {}
+#     amount_to_users = {}
 
+#     for name, email, ticket, qty in users:
+#         email = email.strip()
+#         qty = int(qty)
+#         total_amount = price_map[ticket] * qty
+
+#         user_info[name] = {
+#             "email": email,
+#             "amount": total_amount
+#         }
+
+#         email_to_user[email] = name
+
+#         # ✅ FIX: always append
+#         if total_amount not in amount_to_users:
+#             amount_to_users[total_amount] = []
+
+#         amount_to_users[total_amount].append(name)
+
+#     # Step 3: match by email
+#     result = {}
+#     unmatched_payments = []
+
+#     for pid, pay_email, pay_amount in payments:
+#         pay_email = pay_email.strip()
+#         pay_amount = int(pay_amount)
+
+#         if pay_email in email_to_user:
+#             user = email_to_user[pay_email]
+#             result[pid] = user
+
+#             amt = user_info[user]['amount']
+#             if user in amount_to_users.get(amt, []):
+#                 amount_to_users[amt].remove(user)
+#         else:
+#             unmatched_payments.append((pid, pay_amount))
+
+#     # Step 4: match by amount
+#     for pid, pay_amount in unmatched_payments:
+#         candidates = amount_to_users.get(pay_amount, [])
+
+#         # ✅ FIX: just pick remaining user
+#         if candidates:
+#             user = candidates.pop()
+#             result[pid] = user
+    
+#     return dict(sorted(result.items(), key=lambda x: int(x[0])))
+
+# print(matching(users,payments,prices))
+
+def matching(users,payment,prices):
+    
+    # price lookup 
+    price_lookup = {}
+    for ticket_type , price in prices:
+        price_lookup[ticket_type] = int(price)
+    # print(price_lookup)
+    # user amount
+    user_amount = {}
     for name, email, ticket, qty in users:
-        email = email.strip()
-        qty = int(qty)
-        total_amount = price_map[ticket] * qty
-
-        user_info[name] = {
-            "email": email,
-            "amount": total_amount
-        }
-
-        email_to_user[email] = name
-
-        # ✅ FIX: always append
-        if total_amount not in amount_to_users:
-            amount_to_users[total_amount] = []
-
-        amount_to_users[total_amount].append(name)
-
-    # Step 3: match by email
+        user_amount[name] = price_lookup[ticket] * int(qty)
+    # print(user_amount)
+    # email to name lookup
+    email_to_name = {}
+    for name, email, ticket , qty in users:
+        email_to_name[email.strip()] = name
+    # print(email_to_name)
+    # tracking result
     result = {}
+    unmatched_users = list(user_amount.keys())
     unmatched_payments = []
 
-    for pid, pay_email, pay_amount in payments:
-        pay_email = pay_email.strip()
-        pay_amount = int(pay_amount)
+    # step 1 match by email 
 
-        if pay_email in email_to_user:
-            user = email_to_user[pay_email]
-            result[pid] = user
+    for pay_id , email , amount in payments:
+        email = email.strip()
+        pay_id = pay_id.strip()
+        # print(email,pay_id)
+        if email in email_to_name:
+            name = email_to_name[email]
+            if name in unmatched_users:
+                result[pay_id] = name
+                
+                unmatched_users.remove(name)
+                continue
 
-            amt = user_info[user]['amount']
-            if user in amount_to_users.get(amt, []):
-                amount_to_users[amt].remove(user)
+        unmatched_payments.append((pay_id,int(amount)))
+
+
+    # step 2 - match by unique amount
+    # STEP 2 - match by unique amount
+    still_unmatched = []
+
+    for pay_id, amount in unmatched_payments:
+
+        matching_users = []
+        for name in unmatched_users:
+            if user_amount[name] == amount:
+                matching_users.append(name)
+
+        matching_payments = []
+        for pid, amt in unmatched_payments:
+            if amt == amount:
+                matching_payments.append(pid)
+
+        if len(matching_users) == 1 and len(matching_payments) == 1:
+            result[pay_id] = matching_users[0]
+            unmatched_users.remove(matching_users[0])
         else:
-            unmatched_payments.append((pid, pay_amount))
+            still_unmatched.append((pay_id, amount))
 
-    # Step 4: match by amount
-    for pid, pay_amount in unmatched_payments:
-        candidates = amount_to_users.get(pay_amount, [])
+    # STEP 3 - match by elimination
+    for pay_id, amount in still_unmatched:
+        for name in unmatched_users:
+            if user_amount[name] == amount:
+                result[pay_id] = name
+                unmatched_users.remove(name)
+                break
 
-        # ✅ FIX: just pick remaining user
-        if candidates:
-            user = candidates.pop()
-            result[pid] = user
-    
-    return dict(sorted(result.items(), key=lambda x: int(x[0])))
+    return result
 
-print(matching(users,payments,prices))
+
+
+
+
+matching(users,payments,prices)

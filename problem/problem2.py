@@ -39,7 +39,6 @@ validate(password_8) => [1,2]
 """
 from collections import Counter
 
-
 def validate(password):
     failed = []
 
