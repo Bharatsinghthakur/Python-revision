@@ -56,7 +56,6 @@ def valid_words(words):
         for ch in words[i]:
             if ch_freq.get(ch,0) == 0:
                 return False
-            
             ch_freq[ch] -= 1
         
     return True
