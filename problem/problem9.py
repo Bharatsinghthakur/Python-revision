@@ -185,11 +185,14 @@ def most_requested_resource(logs:List[List[str]]) -> Tuple[str,int]:
     for resource_id , times in times_by_resource.items():
         times.sort()
         left = 0
-
+        # print(times)
         for right in range(len(times)):
+            print(right,len(times),"right","times")
             while times[right] - times[left] > 300:
                 left += 1
+                print(left,"left inside while loopcla")
             window_count = right - left + 1
+            print(window_count)
             if window_count > best_count:
                 best_count = window_count
                 best_resource = resource_id
