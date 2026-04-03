@@ -130,4 +130,4 @@ display_info = mylogger(my_timer(display_info))
 display_info
 
 my timer will execute first then mylogger
-'''
+''' 
