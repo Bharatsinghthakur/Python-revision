@@ -62,6 +62,8 @@ def users_with_three_accesses_in_5min(logs: List[List]) -> List[str]:
     return sorted(flagged_users)
 """
 
+# Logs  
+
 logs = [
     [10, "user_A", "resource_1"],
     [100, "user_A", "resource_1"],
