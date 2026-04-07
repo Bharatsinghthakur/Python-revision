@@ -246,6 +246,6 @@ if __name__ == "__main__":
 # complete journeys there are in the given LogFile.
 
 # ================================================================================
-# END OF DOCUMENT
+# END OF DOCUMENT # should be added into repo
 # ================================================================================
 # we are going good !!
