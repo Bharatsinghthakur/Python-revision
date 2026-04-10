@@ -52,9 +52,4 @@
 
 # oops
 
-class xmp:
-   def __init__(self,name,age):
-      self.name = name
-      self.number = age
-      vivek
-      bharat
+
