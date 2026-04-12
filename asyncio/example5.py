@@ -1,27 +1,27 @@
 import asyncio
 import time
 
+#time.sleep will block our code like - request.get() - its 
+
 async def fetch_data(param):
     print(f"Do something with {param}")
-    await asyncio.sleep(param)
+    time.sleep(param)
     print(f"Done with {param}")
     return f"Result of {param}"
 
 async def main():
-    # we are creating a task -- to schedule them in EVENT LOOP
-    task1 = asyncio.create_task(fetch_data(1)) # schedule coroutine to run on event loop
+    task1 = asyncio.create_task(fetch_data(1))
     task2 = asyncio.create_task(fetch_data(2))
     result1 = await task1
     print("Task 1 fully completed")
     result2 = await task2
-    print("Task 2 fully completed")
-    return [result1 , result2]
+    print("Task2 fully completed")
+    return [result1,result2]
 
 t1 = time.perf_counter()
 
 results = asyncio.run(main())
 print(results)
 
-t2 = time.perf_counter()
+t2  = time.perf_counter()
 print(f"Finished in {t2 - t1:.2f} seconds")
-
