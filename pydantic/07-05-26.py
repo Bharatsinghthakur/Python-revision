@@ -1,6 +1,6 @@
 # pyadantic
-from pydantic import BaseModel , EmailStr
-from typing import List, Dict, Optional
+from pydantic import BaseModel, EmailStr, AnyUrl, Field
+from typing import List, Dict, Optional, Annotated
 
 # ty
 
@@ -22,13 +22,29 @@ from typing import List, Dict, Optional
 
 
 # pydantic model -- which needs to create a schema
+
+
+
+
 class Patient(BaseModel):
-    name: str
-    age: int
-    email:EmailStr[Optional] =
-    weight: float
-    married: bool = False
-    allergies:Optional[List[str]] = None
+    # name: str = Field(max_length=50)
+    name: Annotated[
+        str,
+        Field(
+            max_length=50,
+            title="Name of the patient",
+            description="Give the name of the patient in less than 50 chars",
+            examples=["niko", "neo"],
+        ),
+    ]
+    age: int = Field(gt=0, lt=120)
+    email: Optional[EmailStr] = None
+    linkedIn: Optional[AnyUrl] = None
+    # weight: float = Field(gt=0)
+    weight:Annotated[float,Field(gt=0,strict=True)]
+    married: Annotated[bool, Field(default=None, description="is the patient married")]
+    # allergies: Optional[List[str]] = None
+    allergies: Annotated[Optional[List[str]], Field(default=None, maxlength=5)]
     contact_details: Dict[str, str]  # key and value - both are string
 
 
@@ -63,3 +79,4 @@ update_patient_data(patient1)
 # 1- build model that is class
 # 2 - use that model to create a object
 # 3 - then pass that model to your function
+
