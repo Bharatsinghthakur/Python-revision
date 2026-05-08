@@ -34,6 +34,16 @@ class Patient(BaseModel):
     def transform_name(cls,value):
         return value.capitalize()
     
+    # @field_validator('age',mode='before') # before type cohersion
+    @field_validator('age',mode='after')
+    @classmethod
+    def validate_age(cls,value):
+        if 0 < value < 100:
+            return value
+        else:
+            raise ValueError('Age should be in between 0 and 100')
+    
+    
         
     
 def insert_patient_data(patient: Patient):
@@ -51,7 +61,7 @@ def update_patient_data(patient: Patient):
 patient_info = {
     "name": "bharat",
     'email':"bharat@hdfc.com",
-    "age": "26",
+    "age": "26", # we are provding age as string intentionally 
     "weight": 75.2,
     "married": True,
     "allergies": ["pollen", "dust"],
