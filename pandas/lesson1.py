@@ -27,3 +27,14 @@ data = {'Name':['Jai', 'Princi', 'Gaurav', 'Anuj'],
 df = pd.DataFrame(data)
  
 print(df[['Name', 'Qualification']])
+
+import pandas as pd
+
+ 
+dict = {'First Score':[100, 90, 85, 95],
+        'Second Score': [30, 45, 56, 40],
+        'Third Score':[55, 40, 80, 98]}
+
+df = pd.DataFrame(dict)
+ 
+print(df.isnull())
