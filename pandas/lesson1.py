@@ -38,3 +38,16 @@ dict = {'First Score':[100, 90, 85, 95],
 df = pd.DataFrame(dict)
  
 print(df.isnull())
+
+data = {
+  "calories": [420, 380, 390],
+  "duration": [50, 40, 45]
+}
+
+df = pd.DataFrame(data, index = ["day1", "day2", "day3"])
+
+print(df) 
+
+
+#refer to the named index:
+print(df.loc["day2"])
