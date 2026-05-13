@@ -51,3 +51,6 @@ print(df)
 
 #refer to the named index:
 print(df.loc["day2"])
+
+#refer to the named index:
+print(df.loc["day2"])
