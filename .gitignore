@@ -1,1 +1,3 @@
 .venv
+pandas/data/survey_results_public.csv
+*.csvpandas/data/survey_results_public.csv
